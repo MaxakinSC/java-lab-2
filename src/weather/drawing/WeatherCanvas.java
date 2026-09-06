@@ -9,7 +9,7 @@ import java.util.Random;
 public class WeatherCanvas extends Canvas {
     private final WeatherState weatherState;
     private final Random random = new Random();
-    private int precipitationCount = 6;
+    private final int precipitationCount = 6;
 
     public WeatherCanvas(WeatherState weatherState) {
         this.weatherState = weatherState;
