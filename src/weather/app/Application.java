@@ -3,6 +3,7 @@ package weather.app;
 import weather.generator.RandomWeatherGenerator;
 import weather.input.ConsoleWeatherInput;
 import weather.model.WeatherState;
+import weather.window.*;
 
 public class Application {
     private final RandomWeatherGenerator generator = new RandomWeatherGenerator();
@@ -19,6 +20,18 @@ public class Application {
             weatherState = generator.generate();
             printWeatherState(weatherState);
         }
+
+        MainWindow mainWindow = new MainWindow();
+        mainWindow.setLocation(50, 50);
+        mainWindow.setVisible(true);
+
+        AuthorWindow authorWindow = new AuthorWindow();
+        authorWindow.setLocation(570, 50);
+        authorWindow.setVisible(true);
+
+        WeatherWindow weatherWindow = new WeatherWindow(weatherState);
+        weatherWindow.setLocation(1090, 50);
+        weatherWindow.setVisible(true);
     }
 
     private void printWeatherState(WeatherState weatherState) {
