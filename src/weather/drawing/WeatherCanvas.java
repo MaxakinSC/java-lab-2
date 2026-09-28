@@ -7,9 +7,9 @@ import java.awt.Color;
 import java.util.Random;
 
 public class WeatherCanvas extends Canvas {
-    private final WeatherState weatherState;
+    private WeatherState weatherState;
     private final Random random = new Random();
-    private final int precipitationCount = 6;
+    private int precipitationCount = 6;
 
     public WeatherCanvas(WeatherState weatherState) {
         this.weatherState = weatherState;
@@ -32,6 +32,16 @@ public class WeatherCanvas extends Canvas {
         if (weatherState.isSnow()) {
             drawSnow(graphics);
         }
+    }
+
+    public void setWeatherState(WeatherState weatherState) {
+        this.weatherState = weatherState;
+        repaint();
+    }
+
+    public void setPrecipitationCount(int precipitationCount) {
+        this.precipitationCount = precipitationCount;
+        repaint();
     }
 
     private void drawSun(Graphics graphics) {

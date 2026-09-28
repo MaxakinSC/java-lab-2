@@ -12,6 +12,6 @@ public class LogoCanvas extends Canvas {
     @Override
     public void paint(Graphics graphics) {
         //graphics.drawString("Погодний інформер", 170, 180);
-        graphics.drawImage(logo, 100, 30, 300, 300, this);
+        graphics.drawImage(logo, 0, 0, getWidth(), getHeight(), this);
     }
 }
