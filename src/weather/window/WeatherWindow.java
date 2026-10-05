@@ -1,7 +1,7 @@
 package weather.window;
 
 import javax.swing.*;
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -17,7 +17,6 @@ public class WeatherWindow extends JFrame implements ActionListener {
     private final JCheckBox sunCheckBox = new JCheckBox("Сонце");
     private final JCheckBox cloudCheckBox = new JCheckBox("Хмари");
     private final WeatherCanvas weatherCanvas;
-    private final JButton applyButton = new JButton("Застосувати");
 
     public WeatherWindow(WeatherState weatherState) {
         //this.weatherState = weatherState;
@@ -44,10 +43,14 @@ public class WeatherWindow extends JFrame implements ActionListener {
         weatherCanvas = new WeatherCanvas(initialWeatherState);
         setLayout(new BorderLayout());
         JPanel controlPanel = new JPanel();
+
+        controlPanel.setLayout(new GridLayout(1, 0));
+
         add(controlPanel, BorderLayout.NORTH);
         add(weatherCanvas, BorderLayout.CENTER);
 
         JLabel precipitationCountLabel = new JLabel("Кількість:");
+        JButton applyButton = new JButton("Застосувати");
 
         controlPanel.add(precipitationCountLabel);
         controlPanel.add(precipitationCountField);

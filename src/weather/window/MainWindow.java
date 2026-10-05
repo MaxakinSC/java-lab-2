@@ -18,16 +18,19 @@ public class MainWindow extends JFrame implements ActionListener {
     private final JMenuItem authorItem = new JMenuItem("Author");
     private final JMenuItem infoItem = new JMenuItem("Info");
     private final JMenuItem runItem = new JMenuItem("Run");
+    private final JMenuItem clustersItem = new JMenuItem("Кластери");
 
     private final JPopupMenu popupMenu = new JPopupMenu();
     private final JMenuItem popupAuthorItem = new JMenuItem("Author");
     private final JMenuItem popupInfoItem = new JMenuItem("Info");
     private final JMenuItem popupRunItem = new JMenuItem("Run");
+    private final JMenuItem popupClustersItem = new JMenuItem("Кластери");
 
     public MainWindow() {
         setTitle("Погодний інформер");
-        setSize(500, 400);
+        setSize(850, 560);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
 
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Меню");
@@ -37,6 +40,12 @@ public class MainWindow extends JFrame implements ActionListener {
         menu.add(authorItem);
         menu.add(infoItem);
         menu.add(runItem);
+
+        menu.add(clustersItem);
+        clustersItem.addActionListener(
+                event -> new ClusterWindow().setVisible(true)
+        );
+
         menuBar.add(menu);
         setJMenuBar(menuBar);
 
@@ -46,6 +55,11 @@ public class MainWindow extends JFrame implements ActionListener {
         popupMenu.add(popupAuthorItem);
         popupMenu.add(popupInfoItem);
         popupMenu.add(popupRunItem);
+        popupMenu.add(popupClustersItem);
+
+        popupClustersItem.addActionListener(
+                event -> new ClusterWindow().setVisible(true)
+        );
 
         LogoCanvas logoCanvas = new LogoCanvas();
         add(logoCanvas);
