@@ -25,6 +25,7 @@ public class MainWindow extends JFrame implements ActionListener {
     private final JMenuItem popupInfoItem = new JMenuItem("Info");
     private final JMenuItem popupRunItem = new JMenuItem("Run");
     private final JMenuItem popupClustersItem = new JMenuItem("Кластери");
+    private final JMenuItem popupAnimationItem = new JMenuItem("Animation");
 
     public MainWindow() {
         setTitle("Погодний інформер");
@@ -56,13 +57,33 @@ public class MainWindow extends JFrame implements ActionListener {
         popupMenu.add(popupInfoItem);
         popupMenu.add(popupRunItem);
         popupMenu.add(popupClustersItem);
+        popupMenu.add(popupAnimationItem);
 
         popupClustersItem.addActionListener(
                 event -> new ClusterWindow().setVisible(true)
         );
 
+        popupAnimationItem.addActionListener(
+                event -> new AnimationWindow().setVisible(true)
+        );
+
         LogoCanvas logoCanvas = new LogoCanvas();
         add(logoCanvas);
+
+        Thread movingTextThread = new Thread(() -> {
+            while (true) {
+                logoCanvas.moveText();
+                logoCanvas.repaint();
+
+                try {
+                    Thread.sleep(20);
+                } catch (InterruptedException exception) {
+                    return;
+                }
+            }
+        });
+
+        movingTextThread.start();
 
         logoCanvas.addMouseListener(new MouseAdapter() {
             @Override
