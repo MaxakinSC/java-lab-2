@@ -67,10 +67,12 @@ public class WeatherAnimationCanvas extends Canvas implements Runnable {
                 cloud2Avocado,
                 cloud2X,
                 cloud2Y,
-                180,
-                150,
+                160,
+                133,
                 this
         );
+
+
 
         int sunX = 510 - sunSize / 2;
         int sunY = 100 - sunSize / 2;
@@ -179,11 +181,11 @@ public class WeatherAnimationCanvas extends Canvas implements Runnable {
             cloud2X += cloud2SpeedX;
             cloud2Y += cloud2SpeedY;
 
-            if (cloud2X <= 0 || cloud2X >= getWidth() - 180) {
+            if (cloud2X <= 0 || cloud2X >= getWidth() - 160) {
                 cloud2SpeedX = -cloud2SpeedX;
             }
 
-            if (cloud2Y <= 0 || cloud2Y >= getHeight() - 150) {
+            if (cloud2Y <= 0 || cloud2Y >= getHeight() - 133) {
                 cloud2SpeedY = -cloud2SpeedY;
             }
 
